@@ -1,1 +1,10 @@
-{{form.as_p}}
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container mt-3 col-md-6">
+    <form action="." method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-dark">Register</button>
+    </form>
+</div>
+{% endblock %}
