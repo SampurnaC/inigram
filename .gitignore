@@ -1,2 +1,6 @@
 db.sqlite3
 inigram/__pycache__
+inigramapp/__pycache__
+core/__pycache__
+core/migrations/__pycache__/
+inigramapp/migrations/__pycache__/
