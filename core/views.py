@@ -1,7 +1,8 @@
 from django.shortcuts import render,redirect
 from core.forms import SignupForm
 from django.http import HttpResponse
-
+from django.contrib.auth import logout
+from inigramapp.models import Post
 
 def signup(request):
     if request.method == "POST":
@@ -14,4 +15,10 @@ def signup(request):
     return render(request, 'core/signup.html', {'form': form})
 
 def index(request):
-    return render(request, 'core/index.html')
+    posts = Post.objects.all()
+    return render(request, 'core/index.html', {'posts': posts})
+
+def logout_user(request):
+    logout(request)
+    return redirect('/')
+
