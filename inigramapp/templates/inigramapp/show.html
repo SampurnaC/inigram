@@ -7,7 +7,7 @@
             <!-- <p>Image at the top (card-img-top):</p> -->
             <div class="card" style="width:400px">
             <!-- <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="Card image" style="width:100%"> -->
-            <div class="card-body">
+            <div class="card-body mb-3" >
                 <h4 class="card-title">{{post.title}}</h4>
                 
                 <p class="card-text">{{post.description}}</p>
@@ -17,6 +17,33 @@
                 {% endif %}
             </div>
         </div>
+        <form action="{% url 'like-post' post.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit">Like <span>{{post.likes.all.count}}</span></button>
+        </form>
+
+        {% comment %} <form action="{% url 'dislike-post' post.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button type="submit">DisLike<span>{{post.dislikes.all.count}}</span></button>
+        </form> {% endcomment %}
+        {% if user.is_authenticated %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form}}
+                <button class="btn btn-dark mt-3 justify-content-center" type="submit">Add a Comment</button>
+            </form>
+        {% endif %}    
+        {% for comment in comments %}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-5 col-sm-12 border-bottom position-relative">
+                    <p><strong>{{comment.author}}</p></strong>
+                    <p>{{comment.body}}</p>
+                </div>
+            </div>
+        {% endfor %}
+
         <a href="{% url 'home' %}" class="btn btn-default mt-3">Go Back</a>
     </div>
 </div>
