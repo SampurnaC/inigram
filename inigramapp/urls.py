@@ -9,7 +9,7 @@ urlpatterns = [
     path('edit/<int:id>/', views.edit, name='edit-post'),
     path('delete/<int:id>/', views.delete, name='delete-post'),
     path('post/<int:id>/like', views.like, name='like-post'),
-    # path('post/<int:id>/dislike', views.dislike, name='dislike-post'),
+    path('post/<int:id>/dislike', views.dislike, name='dislike-post'),
 
     
 ]
