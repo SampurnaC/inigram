@@ -20,14 +20,15 @@
         <form action="{% url 'like-post' post.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button type="submit">Like <span>{{post.likes.all.count}}</span></button>
+            <button type="submit" class="btn btn-default">Like: <span>{{post.likes.all.count}}</span></button>
         </form>
 
-        {% comment %} <form action="{% url 'dislike-post' post.id %}" method="POST">
+        <form action="{% url 'dislike-post' post.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ request.path }}">
-            <button type="submit">DisLike<span>{{post.dislikes.all.count}}</span></button>
-        </form> {% endcomment %}
+            <button type="submit" class="btn btn-default">DisLike: <span>{{post.dislikes.all.count}}</span></button>
+        </form>
+
         {% if user.is_authenticated %}
             <form action="" method="POST">
                 {% csrf_token %}
