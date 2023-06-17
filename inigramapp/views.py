@@ -56,17 +56,8 @@ def like(request, id):
     post = Post.objects.get(id=id)
     if request.method == "POST":
 
-        # is_dislike = False
-
-        # for dislike in post.dislikes.all():
-        #     if dislike == request.user:
-        #         is_dislike = True
-        #         break
-
-        # if is_dislike:
-        #     post.dislikes.remove(request.user)
-        is_like = False
         
+        is_like = False
         for like in post.likes.all():
             if like == request.user:
                 is_like = True
@@ -78,23 +69,25 @@ def like(request, id):
             post.likes.remove(request.user)    
 
     next = request.POST.get('next', '/')
+
     return HttpResponseRedirect(next)
-# def dislike(request, id):
-#     post = Post.objects.get(id=id)
-#     if request.method=="POST":
+def dislike(request, id):
+    post = Post.objects.get(id=id)
+    if request.method=="POST":
        
-#         is_dislike = False
+        is_dislike = False
 
-#         for dislike in post.dislikes.all():
-#             if dislike == request.user:
-#                 is_dislike = True
-#                 break
+        for dislike in post.dislikes.all():
+            if dislike == request.user:
+                is_dislike = True
+                break
 
-#         if not is_dislike:
-#             post.dislikes.add(request.user)
+        if not is_dislike:
+            post.dislikes.add(request.user)
 
-#         if is_dislike:
-#             post.dislikes.remove(request.user)
+        if is_dislike:
+            post.dislikes.remove(request.user)
 
-#     next = request.POST.get('next', '/')
-#     return HttpResponseRedirect(next)
+    next = request.POST.get('next', '/')
+
+    return HttpResponseRedirect(next)
