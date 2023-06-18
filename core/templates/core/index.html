@@ -5,6 +5,7 @@
     <h2>Welcome to Inigram<span>
     {% if user.is_authenticated %}
         , <i>{{request.user.username}}</i>
+        <a href="{% url 'profile' %}">Profile</a>
     {% endif %}</span></h2>
     <div class="mt-4 p-5 bg-secondary text-white rounded text-center">
       <h1>Inigram</h1> 
