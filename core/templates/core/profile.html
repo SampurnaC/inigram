@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<div class="container">
+    <a href="{% url 'edit-profile' request.user.profile.id %}">Edit Profile</a>
+
+    {% for profile_post in profile_posts %}
+        <div class="row justify-content-center mt-3">
+        <div class="col-md-5 col-sm-12 border-bottom position-relative">
+            <p><strong>{{profile_post.title}}</p></strong>
+            <p>{{profile_post.description}}</p>
+        </div>
+        </div>
+    {% endfor %}
+</div>    
+{% endblock %}
