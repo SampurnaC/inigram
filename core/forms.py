@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from .models import Profile
+
 
 class SignupForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
@@ -38,3 +40,13 @@ class SigninForm(AuthenticationForm):
         'placeholder': 'Your password',
         'class': 'form-control'
     }))
+class EditProfileForm(forms.ModelForm):
+
+    bio = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'Update Your bio',
+        'class': 'form-control'
+    }))
+
+    class Meta:
+        model= Profile
+        fields=['bio']
