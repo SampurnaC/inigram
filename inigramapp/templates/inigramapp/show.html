@@ -10,7 +10,7 @@
             <div class="card-body mb-3" >
                 <h4 class="card-title">{{post.title}}</h4>
                 
-                <p class="card-text">{{post.description}}</p>
+                <p class="card-text">{{post.description | safe}}</p>
                 {% if post.author == request.user %}
                     <a href="{% url 'edit-post' post.id%}" class="btn btn-default">Edit</a>
                     <a href="{% url 'delete-post' post.id%}" class="btn btn-default">Delete</a>

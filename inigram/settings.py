@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_crontab',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -129,5 +130,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRONJOBS = [
-    ('*/50 * * * *', 'inigramapp.cron.print_hello')
+    ('*/19 * * * *', 'inigramapp.cron.print_hello')
 ]

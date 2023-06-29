@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 class Post(models.Model):
     title=models.CharField(max_length=50)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
-    description=models.TextField()
+    description=RichTextField(blank=True, null=True)
     created_on=models.DateTimeField(default=timezone.now)
     likes=models.ManyToManyField(User, blank=True, related_name='likes')
     dislikes=models.ManyToManyField(User, blank=True, related_name='dislikes')

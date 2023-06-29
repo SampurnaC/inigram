@@ -3,7 +3,8 @@
 <div class="container mt-3">
     <form action="" method="POST">
         {% csrf_token %}
-        {{form}}
+        {{form.media}}
+        {{form.as_p}}
         <button class="btn btn-dark mt-3">Update Post</button>
     </form>
 {% endblock %}
