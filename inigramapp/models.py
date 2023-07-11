@@ -15,7 +15,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    body=models.TextField()
+    body=RichTextField(blank=True, null=True)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
     created_on=models.DateTimeField(default=timezone.now)

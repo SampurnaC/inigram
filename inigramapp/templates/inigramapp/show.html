@@ -32,7 +32,8 @@
         {% if user.is_authenticated %}
             <form action="" method="POST">
                 {% csrf_token %}
-                {{form}}
+                {{form.media}}
+                {{form.as_p}}
                 <button class="btn btn-dark mt-3 justify-content-center" type="submit">Add a Comment</button>
             </form>
         {% endif %}    
