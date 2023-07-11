@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post, User, Comment
 from .forms import PostForm, CommentForm
 from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 def new(request):
     if request.method == "POST":
@@ -52,6 +53,7 @@ def delete(request, id):
     post.delete()
     return redirect('/')
 
+@login_required
 def like(request, id):
     post = Post.objects.get(id=id)
     if request.method == "POST":
@@ -71,6 +73,8 @@ def like(request, id):
     next = request.POST.get('next', '/')
 
     return HttpResponseRedirect(next)
+
+@login_required
 def dislike(request, id):
     post = Post.objects.get(id=id)
     if request.method=="POST":
