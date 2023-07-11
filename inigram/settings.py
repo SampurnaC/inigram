@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -150,3 +151,7 @@ CKEDITOR_CONFIGS = {
             ]),
         },
 }
+
+CRONJOBS = [
+    ('*/1 * * * *', 'inigramapp.cron.print_hello')
+]
