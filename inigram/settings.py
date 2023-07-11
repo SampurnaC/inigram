@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_crontab',
+    # 'django_crontab',
     'ckeditor',
 ]
 
@@ -129,6 +129,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRONJOBS = [
-    ('*/19 * * * *', 'inigramapp.cron.print_hello')
-]
+# CRONJOBS = [
+#     ('*/19090909 * * * *', 'inigramapp.cron.print_hello')
+# ]
