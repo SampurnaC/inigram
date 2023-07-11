@@ -1,12 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Post(models.Model):
     title=models.CharField(max_length=50)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
-    description=RichTextField(blank=True, null=True)
+    description=RichTextUploadingField(blank=True, null=True)
     created_on=models.DateTimeField(default=timezone.now)
     likes=models.ManyToManyField(User, blank=True, related_name='likes')
     dislikes=models.ManyToManyField(User, blank=True, related_name='dislikes')
@@ -15,7 +15,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    body=RichTextField(blank=True, null=True)
+    body=RichTextUploadingField(blank=True, null=True)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
     post=models.ForeignKey(Post, on_delete=models.CASCADE)
     created_on=models.DateTimeField(default=timezone.now)

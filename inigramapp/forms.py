@@ -1,6 +1,7 @@
 from django import forms
 from .models import Post, Comment
 from django.contrib.auth.models import User
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class PostForm(forms.ModelForm):
 
@@ -26,6 +27,7 @@ class CommentForm(forms.ModelForm):
     #     'placeholder': 'Add a Comment',
     #     'class': 'form-control mt-5'
     # }))
+    body = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model= Comment
