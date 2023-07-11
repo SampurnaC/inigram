@@ -6,7 +6,7 @@ from ckeditor.fields import RichTextField
 class Post(models.Model):
     title=models.CharField(max_length=50)
     author=models.ForeignKey(User, on_delete=models.CASCADE)
-    description=RichTextField(blank=True, null=True)
+    description=models.TextField()
     created_on=models.DateTimeField(default=timezone.now)
     likes=models.ManyToManyField(User, blank=True, related_name='likes')
     dislikes=models.ManyToManyField(User, blank=True, related_name='dislikes')

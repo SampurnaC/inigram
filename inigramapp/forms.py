@@ -8,10 +8,10 @@ class PostForm(forms.ModelForm):
         'placeholder': 'Enter your title',
         'class': 'form-control'
     }))
-    # description = forms.CharField(widget=forms.Textarea(attrs={
-    #     'placeholder': 'Enter Your description',
-    #     'class': 'form-control'
-    # }))
+    description = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'Enter Your description',
+        'class': 'form-control'
+    }))
 
     class Meta:
         model= Post
