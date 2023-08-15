@@ -57,21 +57,16 @@ def delete(request, id):
 def like(request, id):
     post = Post.objects.get(id=id)
     if request.method == "POST":
-
-        
         is_like = False
         for like in post.likes.all():
             if like == request.user:
                 is_like = True
                 break
-
         if is_like == False:
             post.likes.add(request.user)
         if is_like:
             post.likes.remove(request.user)    
-
     next = request.POST.get('next', '/')
-
     return HttpResponseRedirect(next)
 
 @login_required
